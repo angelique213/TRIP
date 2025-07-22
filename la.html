@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LA Trip Itinerary</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 30px 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 3.2rem;
+      color: #2c3e50;
+      letter-spacing: 1px;
+      margin-bottom: 0.2em;
+    }
+
+    header p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+    }
+
+    .day {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      padding: 30px 25px;
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .day:hover {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+    }
+
+    .day h2 {
+      color: #34495e;
+      font-size: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+    }
+
+    .event {
+      margin-bottom: 40px;
+    }
+
+    .event-time {
+      font-weight: 600;
+      color: #2980b9;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .event-description {
+      font-weight: 400;
+      color: #2c3e50;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .event img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 8px 16px rgb(0 0 0 / 0.12);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .event img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      color: #bdc3c7;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px 10px;
+        font-size: 16px;
+      }
+
+      header h1 {
+        font-size: 2.4rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .day {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+      }
+
+      .day h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+
+      .event-time {
+        font-size: 1rem;
+      }
+
+      .event-description {
+        font-size: 1.05rem;
+      }
+
+      .event img {
+        max-height: 250px;
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="la.html">Los Angeles</a>
+    <a href="vegas.html">Las Vegas</a>
+  </nav>
+
+  <header>
+    <h1>LA Trip Itinerary</h1>
+    <p>August 24 - 26, 2025</p>
+  </header>
+</body>
+</html>
+
+  <!-- Day 1 -->
+  <section class="day">
+    <h2>August 24 (Arrival & Exploring)</h2>
+
+    <div class="event">
+      <span class="event-time">10:30 AM</span>
+      <div class="event-description">Pick up from LAX Airport</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">11:00 AM – 12:30 PM</span>
+      <div class="event-description">Mich’s Birthday Lunch (near LAX or The Grove)</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:30 PM – 2:00 PM</span>
+      <div class="event-description">Stroll and shop at The Grove</div>
+      <img src="images/the_grove.jpg" alt="The Grove" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">2:00 PM – 4:00 PM</span>
+      <div class="event-description">Santa Monica Pier (visit earlier for daylight)</div>
+      <img src="images/santa_monica.jpg" alt="Santa Monica Pier" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">4:00 PM – 5:30 PM</span>
+      <div class="event-description">Hollywood Walk of Fame</div>
+      <img src="images/hollywood_walk.jpg" alt="Hollywood Walk of Fame" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">5:30 PM – 6:15 PM</span>
+      <div class="event-description">Stop at Porto’s Bakery</div>
+      <img src="images/portos.jpg" alt="Porto's Bakery" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:30 PM – 7:30 PM</span>
+      <div class="event-description">Dinner at Grand Central Market</div>
+      <img src="images/grand_central.jpg" alt="Grand Central Market" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">7:45 PM – 8:15 PM</span>
+      <div class="event-description">Visit LACMA Urban Light</div>
+      <img src="images/lacma.jpg" alt="LACMA Urban Light" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:30 PM – 9:00 PM</span>
+      <div class="event-description">Optional Downtown LA drive or dessert stop</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:30 PM</span>
+      <div class="event-description">Return to Alhambra, rest</div>
+    </div>
+  </section>
+
+  <!-- Day 2 -->
+  <section class="day">
+    <h2>August 25 (Full Day: Disneyland)</h2>
+
+    <div class="event">
+      <span class="event-time">7:00 AM</span>
+      <div class="event-description">Breakfast & prepare for Disneyland</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:00 AM – 9:00 AM</span>
+      <div class="event-description">Drive to Disneyland (~45–60 min)</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:00 AM – 7:00 PM</span>
+      <div class="event-description">Disneyland full-day visit</div>
+      <img src="images/disneyland.jpg" alt="Disneyland Park" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">7:30 PM – 8:30 PM</span>
+      <div class="event-description">Dinner at Dollar Hits (Filipino street food)</div>
+      <img src="images/dollar_hits.jpg" alt="Dollar Hits Food" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:00 PM</span>
+      <div class="event-description">Return to Alhambra, rest</div>
+    </div>
+  </section>
+
+  <!-- Day 3 -->
+  <section class="day">
+    <h2>August 26 (Morning Sightseeing & Departure)</h2>
+
+    <div class="event">
+      <span class="event-time">6:30 AM</span>
+      <div class="event-description">Check out and pack up</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">7:00 AM – 8:00 AM</span>
+      <div class="event-description">Hollywood Sign viewpoint</div>
+      <img src="images/hollywood_sign.jpg" alt="Hollywood Sign" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:15 AM – 9:00 AM</span>
+      <div class="event-description">Drive through Beverly Hills (Rodeo Drive)</div>
+      <img src="images/beverly_hills.jpg" alt="Beverly Hills" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:00 AM – 9:30 AM</span>
+      <div class="event-description">Quick breakfast</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:30 AM</span>
+      <div class="event-description">Head to Las Vegas</div>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 LA Trip Itinerary
+  </footer>
+</body>
+</html>
