@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Las Vegas Trip Itinerary</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 30px 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 3.2rem;
+      color: #2c3e50;
+      letter-spacing: 1px;
+      margin-bottom: 0.2em;
+    }
+
+    header p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+    }
+
+    .day {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      padding: 30px 25px;
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .day:hover {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+    }
+
+    .day h2 {
+      color: #34495e;
+      font-size: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+    }
+
+    .event {
+      margin-bottom: 40px;
+    }
+
+    .event-time {
+      font-weight: 600;
+      color: #2980b9;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .event-description {
+      font-weight: 400;
+      color: #2c3e50;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .event img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 8px 16px rgb(0 0 0 / 0.12);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .event img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      color: #bdc3c7;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px 10px;
+        font-size: 16px;
+      }
+
+      header h1 {
+        font-size: 2.4rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .day {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+      }
+
+      .day h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+
+      .event-time {
+        font-size: 1rem;
+      }
+
+      .event-description {
+        font-size: 1.05rem;
+      }
+
+      .event img {
+        max-height: 250px;
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="la.html">Los Angeles</a>
+    <a href="vegas.html">Las Vegas</a>
+    <a href="utah.html">Utah</a>
+  </nav>
+
+  <header>
+    <h1>Las Vegas Trip Itinerary</h1>
+    <p>August 26 – 28, 2025</p>
+  </header>
+
+  <!-- Day 1 -->
+  <section class="day">
+    <h2>August 26 (Arrival & Evening Stroll)</h2>
+
+    <div class="event">
+      <span class="event-time">3:30 PM – 4:00 PM</span>
+      <div class="event-description">Stop at <strong>Seven Magic Mountains</strong> (on the way from LA)</div>
+      <img src="images/seven_magic_mountains.jpg" alt="Seven Magic Mountains colorful rock totems" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">4:30 PM</span>
+      <div class="event-description">Arrive in Las Vegas & hotel check‑in</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">5:30 PM – 6:30 PM</span>
+      <div class="event-description">Early dinner at <strong>Chamon</strong> (or nearby restaurant)</div>
+      <img src="images/chamon.jpg" alt="Dinner at Chamon" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:45 PM – 8:00 PM</span>
+      <div class="event-description"><strong>M&amp;M’s World</strong> & <strong>Hershey’s Chocolate World</strong> (street by MGM & NY‑NY)</div>
+      <img src="images/mms_world.jpg" alt="M&M's World storefront" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:15 PM – 9:00 PM</span>
+      <div class="event-description"><strong>Bellagio Conservatory</strong> & evening Fountain show</div>
+      <img src="images/bellagio_conservatory.jpg" alt="Bellagio Conservatory floral display" />
+    </div>
+
+    <!-- 9:15–11:00 PM moved to Aug 27 as requested -->
+  </section>
+
+  <!-- Day 2 -->
+  <section class="day">
+    <h2>August 27 (Full Day in Las Vegas)</h2>
+
+    <div class="event">
+      <span class="event-time">8:00 AM – 9:00 AM</span>
+      <div class="event-description">Breakfast</div>
+    </div>
+
+    <!-- Coffee stop added -->
+    <div class="event">
+      <span class="event-time">9:10 AM – 9:35 AM</span>
+      <div class="event-description">Coffee at <strong>Moignet Cafe</strong></div>
+      <img src="images/moignet.jpg" alt="Moignet Cafe latte and pastry" />
+    </div>
+
+    <!-- Moved from Aug 26 -->
+    <div class="event">
+      <span class="event-time">9:45 AM – 10:45 AM</span>
+      <div class="event-description">Explore <strong>Caesars Palace</strong> (Forum Shops & Atlantis fountain)</div>
+      <img src="images/caesars_palace.jpg" alt="Caesars Palace Forum Shops interior" />
+    </div>
+
+    <!-- Moved from Aug 26 -->
+    <div class="event">
+      <span class="event-time">11:00 AM – 12:00 PM</span>
+      <div class="event-description">Walk through <strong>The Venetian</strong> (Grand Canal Shoppes & gondolas)</div>
+      <img src="images/venetian.jpg" alt="Venetian canals and gondolas" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:10 PM – 1:00 PM</span>
+      <div class="event-description">Lunch along the <strong>LINQ Promenade</strong></div>
+      <img src="images/Linq.jpg" alt="LINQ Promenade outdoor dining" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:15 PM – 2:00 PM</span>
+      <div class="event-description">Flamingo <strong>Wildlife Habitat</strong> garden stroll</div>
+      <img src="images/flamingo_habitat.jpg" alt="Flamingo Wildlife Habitat with ponds" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">3:15 PM – 3:45 PM</span>
+      <div class="event-description">Sweet stop: <strong>Milkcow Cafe</strong></div>
+      <img src="images/milkcow.jpg" alt="Milkcow soft-serve with toppings" />
+    </div>
+
+    <!-- New stop added -->
+    <div class="event">
+      <span class="event-time">3:50 PM – 4:20 PM</span>
+      <div class="event-description">Churros at <strong>Ole Churros</strong></div>
+      <img src="images/ole_churros.jpg" alt="Fresh churros with dipping sauce" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">5:30 PM – 6:15 PM</span>
+      <div class="event-description">Ride the <strong>High Roller</strong> (golden hour views)</div>
+      <img src="images/high_roller.jpg" alt="High Roller observation wheel at sunset" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:30 PM – 7:00 PM</span>
+      <div class="event-description">Photo at the <strong>Welcome to Fabulous Las Vegas</strong> sign</div>
+      <img src="images/fabulous_sign.jpg" alt="Las Vegas sign at dusk" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">7:15 PM – 8:15 PM</span>
+      <div class="event-description"><strong>Bellagio Fountains</strong> at night</div>
+      <img src="images/bellagio_conservatory.jpg" alt="Bellagio Fountains at night" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:45 PM – 10:30 PM</span>
+      <div class="event-description"><strong>Fremont Street Experience</strong> evening lights & street entertainment</div>
+      <img src="images/fremont_street.jpg" alt="Fremont Street LED canopy" />
+    </div>
+  </section>
+
+  <!-- Day 3 -->
+  <section class="day">
+    <h2>August 28 (Antelope Canyon & Grand Canyon ➜ Utah)</h2>
+
+    <div class="event">
+      <span class="event-time">4:30 AM – 9:30 AM</span>
+      <div class="event-description">Drive Las Vegas ➜ <strong>AZ</strong> for <strong>Antelope Canyon</strong></div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">10:00 AM – 12:00 PM</span>
+      <div class="event-description"><strong>Antelope Canyon</strong> guided tour (Upper or Lower)</div>
+      <img src="images/antelope_canyon.jpg" alt="Light beams inside Antelope Canyon" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:15 PM – 1:00 PM</span>
+      <div class="event-description">Stop at <strong>Horseshoe Bend</strong></div>
+      <img src="images/horseshoe_bend.jpg" alt="Horseshoe Bend overlook" />
+    </div>
+
+    <div class="event">
+        <span class="event-time">1:00 PM – 3:15 PM</span>
+        <div class="event-description">
+          Drive to <strong>Grand Canyon South Rim</strong> (Desert View ➜ Mather Point)
+        </div>
+        <img src="images/grand_canyon.jpg" alt="Grand Canyon South Rim vista" />
+      </div>
+      
+      <div class="event">
+        <span class="event-time">3:30 PM – 5:30 PM</span>
+        <div class="event-description">
+          Stop at key viewpoints, take pictures at <strong>Grand Canyon South Rim</strong>
+        </div>
+
+      <div class="event">
+        <span class="event-time">5:30 PM – 9:00 PM</span>
+        <div class="event-description">
+          Begin drive to <strong>Utah</strong><br>
+          ➜ Dinner stop and <strong>check-in at hotel</strong> along the way
+        </div>
+      </div>
+      
+  <footer>
+    &copy; 2025 Las Vegas Trip Itinerary
+  </footer>
+</body>
+</html>
+
+
