@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NYC → Palmyra → Buffalo → Niagara Itinerary</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 30px 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    nav { display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 24px; }
+    nav a { color:#2c3e50; text-decoration:none; font-weight:600; }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 3.2rem;
+      color: #2c3e50;
+      letter-spacing: 1px;
+      margin-bottom: 0.2em;
+    }
+
+    header p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+    }
+
+    .day {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      padding: 30px 25px;
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .day:hover { box-shadow: 0 8px 20px rgb(0 0 0 / 0.1); }
+
+    .day h2 {
+      color: #34495e;
+      font-size: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 12px;
+      margin-bottom: 28px;
+    }
+
+    .event { margin-bottom: 40px; }
+
+    .event-time {
+      font-weight: 600;
+      color: #2980b9;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .event-description {
+      font-weight: 400;
+      color: #2c3e50;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .event img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 8px 16px rgb(0 0 0 / 0.12);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .event img:hover { transform: scale(1.03); }
+
+    footer {
+      text-align: center;
+      color: #bdc3c7;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body { padding: 15px 10px; font-size: 16px; }
+      header h1 { font-size: 2.4rem; }
+      header p { font-size: 1rem; }
+      .day { padding: 20px 15px; margin-bottom: 30px; }
+      .day h2 { font-size: 1.6rem; margin-bottom: 20px; }
+      .event-time { font-size: 1rem; }
+      .event-description { font-size: 1.05rem; }
+      .event img { max-height: 250px; border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#day-27">Dec 27</a>
+    <a href="#day-28">Dec 28</a>
+    <a href="#day-29">Dec 29</a>
+    <a href="#day-30">Dec 30</a>
+  </nav>
+
+  <header>
+    <h1>NYC → Palmyra → Buffalo → Niagara</h1>
+    <p>December 27 – 30, 2025 · With Manhattan NY LDS Temple · No Goat Island</p>
+  </header>
+
+  <!-- Day 1 -->
+  <section id="day-27" class="day">
+    <h2>December 27 (NYC Kickoff · Big Bus · Sunset at SUMMIT)</h2>
+
+    <div class="event">
+      <span class="event-time">6:00 AM – 8:00 AM</span>
+      <div class="event-description">Arrive at Newark (EWR) → Transfer to Manhattan → Breakfast near hotel. Transit ~$15–40 depending on train/ride.</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:00 AM – 9:30 AM</span>
+      <div class="event-description">Activate Big Bus (Downtown Loop). 24‑hour pass ~<strong>$60</strong>.</div>
+      <img src="imgs/bigbus.jpg" alt="Big Bus NYC" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:45 AM – 12:15 PM</span>
+      <div class="event-description">Statue of Liberty (Ferry from Battery Park). Ticket ~<strong>$25–30</strong>. Allow 2–2.5 h incl. ferry and museum.</div>
+      <img src="imgs/statue.png" alt="Statue of Liberty" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:20 PM – 12:40 PM</span>
+      <div class="event-description">Wall Street Christmas Tree (photo stop). Free.</div>
+      <img src="imgs/wallstree.png" alt="Wall Street Christmas Tree" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:45 PM – 1:15 PM</span>
+      <div class="event-description">💸 <strong>Cheap Eat (FiDi):</strong> Los Tacos No. 1 — quick tacos ~$5 each (Oculus/Westfield). Great value & super fast.</div>
+      <img src="imgs/lostacos.png" alt="Los Tacos No. 1" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:20 PM – 1:30 PM</span>
+      <div class="event-description">Walk toward Brooklyn Bridge (digest & photo stops on the way).</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:30 PM – 2:10 PM</span>
+      <div class="event-description">Brooklyn Bridge (walk partway and back). Free.</div>
+      <img src="imgs/Brooklynbridge.png" alt="Brooklyn Bridge" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">2:15 PM – 2:45 PM</span>
+      <div class="event-description">💸 <strong>Cheap Eat (Chinatown):</strong> Vanessa’s Dumpling House — dumplings & sesame pancakes ~$5–8.</div>
+      <img src="imgs/vanessa.png" alt="Vanessa's Dumpling House" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">4:00 PM – 5:30 PM</span>
+      <div class="event-description">SUMMIT One Vanderbilt (best day→sunset→night combo). Ticket ~<strong>$44–55</strong>.</div>
+      <img src="imgs/summitone.png" alt="SUMMIT One Vanderbilt" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">5:40 PM – 6:00 PM</span>
+      <div class="event-description">💸 <strong>Cheap Eat (near Grand Central):</strong> Urbanspace Vanderbilt Food Hall — many stalls; budget plates ~$10–15.</div>
+      <img src="imgs/urbanspace.png" alt="Urbanspace Vanderbilt" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:10 PM – 6:45 PM</span>
+      <div class="event-description">Rockefeller Center Tree & Rink (view free; skating ~$30–45).</div>
+      <img src="imgs/rockefeller.png" alt="Rockefeller Center Tree" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">7:00 PM – 7:45 PM</span>
+      <div class="event-description">Bryant Park Winter Village (free to enter; skate rental ~$18–25).</div>
+      <img src="imgs/brayantpark.png" alt="Bryant Park Winter Village" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:00 PM – 10:00 PM</span>
+      <div class="event-description">Times Square (open 24/7). Night lights photos.</div>
+      <img src="imgs/timesquare.png" alt="Times Square at night" />
+    </div>
+  </section>
+
+  <!-- Day 2 -->
+  <section id="day-28" class="day">
+    <h2>December 28 (NYC Highlights · Manhattan NY LDS Temple)</h2>
+
+    <div class="event">
+      <span class="event-time">8:30 AM – 9:15 AM</span>
+      <div class="event-description">Macy’s Herald Square & Holiday Windows (free).</div>
+      <img src="imgs/macys.jpg" alt="Macy's Herald Square" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:30 AM – 10:15 AM</span>
+      <div class="event-description">5th Avenue Holiday Window Walk (free).</div>
+      <img src="imgs/5th_ave.jpg" alt="5th Avenue Windows" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">10:20 AM – 10:45 AM</span>
+      <div class="event-description">Lotte New York Palace — Christmas Tree (free photo spot).</div>
+      <img src="imgs/lotte_palace.jpg" alt="Lotte New York Palace Tree" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">11:15 AM – 11:45 AM</span>
+      <div class="event-description">Manhattan New York Temple (LDS) — exterior visit & photos. 125 Columbus Ave. Free.</div>
+      <img src="imgs/manhattan_temple.jpg" alt="Manhattan New York Temple" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:15 PM – 12:45 PM</span>
+      <div class="event-description">Joe’s Pizza (quick lunch). ~$5–7 per slice.</div>
+      <img src="imgs/joes_pizza.jpg" alt="Joe's Pizza" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:00 PM – 1:20 PM</span>
+      <div class="event-description">💸 <strong>Cheap Eat (Midtown West):</strong> Xi’an Famous Foods — hand‑pulled noodles & spicy lamb burger ~$8–13.</div>
+      <img src="imgs/xian.jpg" alt="Xi'an Famous Foods" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:30 PM – 1:50 PM</span>
+      <div class="event-description">The Vessel (Hudson Yards) — base area photos (free).</div>
+      <img src="imgs/vessel.jpg" alt="The Vessel at Hudson Yards" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">2:00 PM – 3:00 PM</span>
+      <div class="event-description">Chelsea Market — look for Los Tacos No. 1, Miznon, and Takumi. Budget plates ~$8–15.</div>
+      <img src="imgs/chelsea_market.jpg" alt="Chelsea Market" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">3:10 PM – 3:40 PM</span>
+      <div class="event-description">Market 57 (Pier 57) — additional cheap eats & rooftop park views. Snack ~$8–15.</div>
+      <img src="imgs/market57.jpg" alt="Market 57 at Pier 57" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:30 PM – 7:15 PM</span>
+      <div class="event-description">Ichiran Ramen (Midtown). ~$25–30 pp. (Or swap for 💸 <strong>Mamoun’s Falafel</strong> ~$6–9 if you want cheaper.)</div>
+      <img src="imgs/ichiran.jpg" alt="Ichiran Ramen" />
+    </div>
+  </section>
+
+  <!-- Day 3 -->
+  <section id="day-29" class="day">
+    <h2>December 29 (Drive NYC → Palmyra quick stops → Buffalo check‑in)</h2>
+
+    <div class="event">
+      <span class="event-time">6:00 AM – 12:00 PM</span>
+      <div class="event-description">Drive NYC → Palmyra (~300 mi · 5.5–6 h). Breakfast/coffee on the road.</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:00 PM – 12:30 PM</span>
+      <div class="event-description">Palmyra New York Temple (LDS). Free. Photos & quiet visit.</div>
+      <img src="imgs/palmyra_temple.jpg" alt="Palmyra New York Temple" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">12:35 PM – 1:05 PM</span>
+      <div class="event-description">Sacred Grove (Smith Family Farm). Free. Gentle walk.</div>
+      <img src="imgs/sacred_grove.jpg" alt="Sacred Grove" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:10 PM – 1:30 PM</span>
+      <div class="event-description">Hill Cumorah (photo stop). Free.</div>
+      <img src="imgs/hill_cumorah.jpg" alt="Hill Cumorah" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:35 PM – 2:05 PM</span>
+      <div class="event-description">Book of Mormon Publication Site (Downtown Palmyra). Free.</div>
+      <img src="imgs/publication_site.jpg" alt="Book of Mormon Publication Site" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">3:00 PM – 5:00 PM</span>
+      <div class="event-description">Drive Palmyra → Buffalo (~95 mi · 1.5–2 h). Check‑in hotel.</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">6:30 PM – 8:00 PM</span>
+      <div class="event-description">Dinner in Buffalo — try Anchor Bar (original Buffalo wings) or Chef’s Restaurant.</div>
+      <img src="imgs/anchor_bar.jpg" alt="Buffalo wings at Anchor Bar" />
+    </div>
+  </section>
+
+  <!-- Day 4 -->
+  <section id="day-30" class="day">
+    <h2>December 30 (Niagara Falls U.S. Viewpoints → Lunch → Drive to Virginia)</h2>
+
+    <div class="event">
+      <span class="event-time">7:30 AM – 8:15 AM</span>
+      <div class="event-description">Drive Buffalo → Niagara Falls State Park (~25–30 min). Park near Prospect/Visitor Center (~$10).</div>
+    </div>
+
+    <div class="event">
+      <span class="event-time">8:30 AM – 9:00 AM</span>
+      <div class="event-description">Niagara Falls Observation Tower (Prospect Point). <strong>$1.25</strong>. Best single panorama (U.S. side).</div>
+      <img src="imgs/observation_tower.jpg" alt="Niagara Observation Tower" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">9:15 AM – 10:00 AM</span>
+      <div class="event-description">Maid of the Mist — boat ride (if operating). ~<strong>$28</strong> adult. <em>Seasonal; often closed in winter</em>.</div>
+      <img src="imgs/maid_of_the_mist.jpg" alt="Maid of the Mist" />
+    </div>
+
+    <div class="event">
+        <span class="event-time">10: AM – 11:00 AM</span>
+        <div class="event-description">Cave of the Winds — elevator down to the base of Bridal Veil Falls. <strong>~$19–21 adult</strong>. Rain poncho & sandals provided. Experience the power of the falls up close!</div>
+        <img src="imgs/cave_of_the_winds.jpg" alt="Cave of the Winds Niagara Falls" />
+        </div>
+
+    <div class="event">
+      <span class="event-time">12:00 PM – 12:45 PM</span>
+      <div class="event-description">Lunch near the Falls — Red Coach Inn (year‑round). ~$20–35 pp.</div>
+      <img src="imgs/red_coach_inn.jpg" alt="Red Coach Inn" />
+    </div>
+
+    <div class="event">
+      <span class="event-time">1:00 PM → late evening</span>
+      <div class="event-description">Drive back to Virginia (~7–8 h · ~420 mi). Fuel+tolls ~$100–130.</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Trip Itinerary — NYC · Palmyra · Buffalo · Niagara
+  </footer>
+</body>
+</html>
