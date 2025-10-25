@@ -3,365 +3,604 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NYC → Palmyra → Buffalo → Niagara Itinerary</title>
+  <title>NYC → Palmyra → Buffalo → Niagara Itinerary — Christmas Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green: #0f5132;
+      --red: #b02a37;
+      --gold: #c7a008;
+      --bg: #0b1a25;         /* deep blue night */
+      --card: #ffffff;
+      --text: #1f2a37;
+      --muted: #6b7280;
+      --ring: rgba(255,255,255,.15);
+    }
+    * { box-sizing: border-box; }
+    html, body { height:100%; }
+    html { scroll-behavior: smooth; }
+    section { scroll-margin-top: 84px; }
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #fafafa;
-      color: #333;
       margin: 0;
-      padding: 30px 20px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-      font-size: 18px;
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(255,255,255,0.08), transparent 60%),
+        radial-gradient(1000px 500px at 90% 0%, rgba(255,255,255,0.06), transparent 60%),
+        linear-gradient(#0b1a25, #0a1420 60%);
+      padding: 24px 14px 96px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    nav { display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 24px; }
-    nav a { color:#2c3e50; text-decoration:none; font-weight:600; }
-
-    header {
-      text-align: center;
-      margin-bottom: 50px;
+    /* Sticky, touch-friendly nav */
+    nav {
+      position: sticky; top: 0; z-index: 50; max-width: 900px; margin: 0 auto 18px;
+      display:flex; gap:10px; flex-wrap:nowrap; overflow-x:auto; padding: 10px 6px; scrollbar-width: none;
+      background: linear-gradient(180deg, rgba(10,20,32,.85), rgba(10,20,32,.35));
+      backdrop-filter: blur(8px);
+      border-radius: 999px; border:1px solid var(--ring);
     }
+    nav::-webkit-scrollbar{ display:none; }
+    nav a { text-decoration:none; color:#fff; background: rgba(255,255,255,.08); border:1px solid var(--ring);
+            padding: 12px 16px; border-radius: 999px; flex: 0 0 auto; min-width: 84px; text-align:center;
+            transition: transform .2s ease, background .2s ease; font-weight:600; font-size: 0.95rem; }
+    nav a:active { transform: scale(.98); }
+    nav a:hover { transform: translateY(-1px); background: rgba(255,255,255,.14); }
 
+    /* Header */
+    header { text-align: center; margin: 0 auto 28px; max-width: 900px; position: relative; padding-top: 6px; }
     header h1 {
-      font-weight: 700;
-      font-size: 3.2rem;
-      color: #2c3e50;
-      letter-spacing: 1px;
-      margin-bottom: 0.2em;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.6rem, 5.6vw, 3rem);
+      color: #fff;
+      letter-spacing: .5px;
+      margin: 0 0 6px;
+      text-shadow: 0 5px 24px rgba(0,0,0,.35);
     }
+    header p { color: #e5e7eb; margin:0; font-weight: 600; font-size: clamp(0.95rem, 2.8vw, 1rem); }
 
-    header p {
-      font-weight: 400;
-      font-size: 1.1rem;
-      color: #7f8c8d;
-      letter-spacing: 0.5px;
-      margin-top: 0;
-    }
+    /* Festive light garland */
+    .lights { --bulb-size: 14px; position: absolute; inset: -16px 0 auto 0; height: 0; pointer-events: none; }
+    .lights::before, .lights::after { content: ""; display: block; height: 0; border-top: 3px dashed rgba(255,255,255,.25); }
+    .bulbs { display:flex; justify-content:center; gap: 16px; margin-top:10px; }
+    .bulb { width: var(--bulb-size); height: var(--bulb-size); border-radius: 50%; filter: drop-shadow(0 0 6px currentColor); }
+    .bulb:nth-child(4n+1){ color:#ff6961; animation: twinkle 2.8s infinite ease-in-out; }
+    .bulb:nth-child(4n+2){ color:#7ef5a3; animation: twinkle 2.4s infinite ease-in-out .2s; }
+    .bulb:nth-child(4n+3){ color:#8ecbff; animation: twinkle 2.2s infinite ease-in-out .5s; }
+    .bulb:nth-child(4n+4){ color:#ffe28a; animation: twinkle 2.6s infinite ease-in-out .9s; }
+    @keyframes twinkle { 0%,100%{ opacity:.35; } 50%{ opacity:1; } }
 
+    /* Days */
     .day {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
-      padding: 30px 25px;
-      margin-bottom: 40px;
-      transition: box-shadow 0.3s ease;
+      max-width: 900px; margin: 0 auto 22px; background: var(--card);
+      border-radius: 16px; box-shadow: 0 18px 40px rgba(3,7,18,.25);
+      overflow: hidden; border: 1px solid rgba(255,255,255,.06);
+    }
+    .day-header { padding: 14px 16px; background: linear-gradient(90deg, var(--green), var(--red)); color:#fff; }
+    .day-header h2 { margin:0; font-size: clamp(1.05rem, 3.4vw, 1.6rem); letter-spacing:.2px; line-height: 1.25; }
+
+    .day-content { padding: 18px 14px; }
+    .event { margin-bottom: 24px; }
+    .event-time { font-weight:700; color: var(--green); font-size: 0.98rem; margin-bottom:8px; display:block; }
+    .event-description { color: var(--text); font-size: 1.02rem; margin-bottom: 10px; }
+
+    /* Slider */
+    .slider { position: relative; width: 100%; aspect-ratio: 16/9; border-radius:14px; overflow:hidden;
+              box-shadow: 0 8px 24px rgba(3,7,18,.18); }
+    .slider img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition: opacity .7s ease; }
+    .slider img.active { opacity: 1; }
+    .slider .caption { position:absolute; left:0; right:0; bottom:0; padding: 10px 12px; color:#fff;
+                       background: linear-gradient(transparent, rgba(0,0,0,.65)); font-weight:600; font-size:.9rem; }
+
+    /* Music control */
+    .music-toggle {
+      position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 40;
+      display:flex; align-items:center; gap:8px; border:1px solid var(--ring);
+      background: rgba(255,255,255,.88); color:#111; padding: 10px 12px; border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25); cursor:pointer; font-weight:700;
+      backdrop-filter: blur(8px); touch-action: manipulation;
+    }
+    .music-toggle[aria-pressed="true"] { outline: 2px solid var(--gold); }
+
+    /* Snow canvas */
+    #snow { position: fixed; inset:0; z-index: 5; pointer-events:none; }
+
+    footer { text-align:center; color:#e5e7eb; margin: 40px 0 20px; font-size:.95rem; }
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .bulb { animation: none; }
+      .slider img { transition: none; }
     }
 
-    .day:hover { box-shadow: 0 8px 20px rgb(0 0 0 / 0.1); }
-
-    .day h2 {
-      color: #34495e;
-      font-size: 2rem;
-      font-weight: 700;
-      border-bottom: 2px solid #ecf0f1;
-      padding-bottom: 12px;
-      margin-bottom: 28px;
-    }
-
-    .event { margin-bottom: 40px; }
-
-    .event-time {
-      font-weight: 600;
-      color: #2980b9;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      display: block;
-      letter-spacing: 0.5px;
-    }
-
-    .event-description {
-      font-weight: 400;
-      color: #2c3e50;
-      font-size: 1.15rem;
-      margin-bottom: 12px;
-    }
-
-    .event img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      border-radius: 14px;
-      box-shadow: 0 8px 16px rgb(0 0 0 / 0.12);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    .event img:hover { transform: scale(1.03); }
-
-    footer {
-      text-align: center;
-      color: #bdc3c7;
-      font-size: 0.9rem;
-      margin-top: 60px;
-      letter-spacing: 1px;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      body { padding: 15px 10px; font-size: 16px; }
-      header h1 { font-size: 2.4rem; }
-      header p { font-size: 1rem; }
-      .day { padding: 20px 15px; margin-bottom: 30px; }
-      .day h2 { font-size: 1.6rem; margin-bottom: 20px; }
-      .event-time { font-size: 1rem; }
-      .event-description { font-size: 1.05rem; }
-      .event img { max-height: 250px; border-radius: 10px; }
+    /* Phone-first tweaks */
+    @media (max-width: 640px){
+      .day-content { padding: 14px 12px; }
+      .slider { aspect-ratio: 4/3; }
+      .event-description { font-size: 1rem; }
+      body { padding-bottom: 110px; }
     }
   </style>
 </head>
 <body>
-  <nav>
+  <!-- Snow layer -->
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <header>
+    <h1>NYC → Palmyra → Buffalo → Niagara</h1>
+    <div class="lights" aria-hidden="true">
+      <div class="bulbs">
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+      </div>
+    </div>
+    <p>December 27 – 30, 2025 • Christmas Edition 🎄</p>
+  </header>
+
+  <nav aria-label="Jump to day">
     <a href="#day-27">Dec 27</a>
     <a href="#day-28">Dec 28</a>
     <a href="#day-29">Dec 29</a>
     <a href="#day-30">Dec 30</a>
   </nav>
 
-  <header>
-    <h1>NYC → Palmyra → Buffalo → Niagara</h1>
-    <p>December 27 – 30, 2025 ·</p>
-  </header>
+  <!-- Day 1 -->
+  <section id="day-27" class="day">
+    <div class="day-header"><h2>December 27 · NYC Kickoff • Big Bus • Sunset at SUMMIT</h2></div>
+    <div class="day-content">
+      <div class="event">
+        <span class="event-time">6:00 AM – 8:00 AM</span>
+        <div class="event-description">Arrive at Newark (EWR) → Transfer to Manhattan → Breakfast near hotel.</div>
+      </div>
 
-<!-- Day 1 -->
-<section id="day-27" class="day">
-  <h2>December 27 (NYC Kickoff · Big Bus · Sunset at SUMMIT)</h2>
+      <div class="event">
+        <span class="event-time">9:00 AM – 9:30 AM</span>
+        <div class="event-description">Activate Big Bus (Downtown Loop). 24-hour pass ~<strong>$60</strong>.</div>
+        <div class="slider" data-speed="3500">
+          <img loading="lazy" decoding="async" src="imgs/bigbus.jpg" alt="Big Bus NYC" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/bigbus_2.jpg" alt="Big Bus passing by the Flatiron"/>
+          <div class="caption">Big Bus NYC — Downtown Loop</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">6:00 AM – 8:00 AM</span>
-    <div class="event-description">Arrive at Newark (EWR) → Transfer to Manhattan → Breakfast near hotel.</div>
-  </div>
+      <div class="event">
+        <span class="event-time">9:45 AM – 12:15 PM</span>
+        <div class="event-description">🗽 Statue of Liberty (Ferry from Battery Park). Ticket ~<strong>$25–30</strong>. Allow 2–2.5 h incl. ferry and museum.</div>
+        <div class="slider" data-speed="3200">
+          <img loading="lazy" decoding="async" src="imgs/statue.png" alt="Statue of Liberty" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/statue_2.jpg" alt="Ferry approaching Liberty Island"/>
+          <img loading="lazy" decoding="async" src="imgs/statue_3.jpg" alt="Close-up of the Statue of Liberty"/>
+          <div class="caption">Statue of Liberty</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">9:00 AM – 9:30 AM</span>
-    <div class="event-description">Activate Big Bus (Downtown Loop). 24-hour pass ~<strong>$60</strong>.</div>
-    <img src="imgs/bigbus.jpg" alt="Big Bus NYC" />
-  </div>
+      <div class="event">
+        <span class="event-time">12:25 PM – 12:45 PM</span>
+        <div class="event-description">Wall Street Christmas Tree & Charging Bull (photo stop). Free.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/wallstree.png" alt="Wall Street Christmas Tree" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/wallstree_2.jpg" alt="Holiday decor on Wall Street"/>
+          <div class="caption">Wall Street Holiday Stop</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">9:45 AM – 12:15 PM</span>
-    <div class="event-description">🗽 Statue of Liberty (Ferry from Battery Park). Ticket ~<strong>$25–30</strong>. Allow 2–2.5 h incl. ferry and museum.</div>
-    <img src="imgs/statue.png" alt="Statue of Liberty" />
-  </div>
+      <div class="event">
+        <span class="event-time">12:50 PM – 1:20 PM</span>
+        <div class="event-description">🌮 <strong>Los Tacos No. 1 (Oculus)</strong> — NYC-famous tacos (~$5 each). Quick, fresh & top-rated.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/lostacos.png" alt="Los Tacos No. 1" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/lostacos_2.jpg" alt="Tacos close-up"/>
+          <div class="caption">Lunch — Los Tacos No. 1</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">12:25 PM – 12:45 PM</span>
-    <div class="event-description">Wall Street Christmas Tree & Charging Bull (photo stop). Free.</div>
-    <img src="imgs/wallstree.png" alt="Wall Street Christmas Tree" />
-  </div>
+      <div class="event">
+        <span class="event-time">1:30 PM – 1:50 PM</span>
+        <div class="event-description">Brooklyn Bridge (entrance viewpoint — optional short walk partway). Free.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/Brooklynbridge.png" alt="Brooklyn Bridge" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/Brooklynbridge_2.jpg" alt="Walking on Brooklyn Bridge"/>
+          <div class="caption">Brooklyn Bridge</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">12:50 PM – 1:20 PM</span>
-    <div class="event-description">🌮 <strong>Los Tacos No. 1 (Oculus)</strong> — NYC-famous tacos (~$5 each). Quick, fresh & top-rated.</div>
-    <img src="imgs/lostacos.png" alt="Los Tacos No. 1" />
-  </div>
+      <div class="event">
+        <span class="event-time">2:00 PM – 2:45 PM</span>
+        <div class="event-description">📸 <strong>DUMBO (Brooklyn)</strong> — Iconic Washington Street view; explore Brooklyn Bridge Park.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/dumbo.jpg" alt="DUMBO skyline" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/dumbo_2.jpg" alt="Washington Street with Manhattan Bridge"/>
+          <div class="caption">DUMBO — Washington Street</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">1:30 PM – 1:50 PM</span>
-    <div class="event-description">Brooklyn Bridge (entrance viewpoint — optional short walk partway). Free.</div>
-    <img src="imgs/Brooklynbridge.png" alt="Brooklyn Bridge" />
-  </div>
+      <div class="event">
+        <span class="event-time">3:00 PM – 3:30 PM</span>
+        <div class="event-description">🥟 <strong>Vanessa’s Dumpling House (Chinatown)</strong> — dumplings & sesame pancakes (~$5–8).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/vanessa.png" alt="Vanessa's Dumpling House" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/vanessa_2.jpg" alt="Famous dumplings"/>
+          <div class="caption">Snack — Vanessa’s Dumplings</div>
+        </div>
+      </div>
 
-  <!-- Added DUMBO for skyline + photo break -->
-  <div class="event">
-    <span class="event-time">2:00 PM – 2:45 PM</span>
-    <div class="event-description">📸 <strong>DUMBO (Brooklyn)</strong> — Hop off Big Bus at <em>Brooklyn Bridge / DUMBO stop</em>.  
-      Iconic Washington Street photo with Manhattan Bridge, explore Brooklyn Bridge Park & Pebble Beach skyline view.  
-      Optional coffee or snack at <strong>Time Out Market New York</strong>. Free to explore.</div>
-    <img src="imgs/dumbo.jpg" alt="DUMBO Brooklyn skyline view" />
-  </div>
+      <div class="event">
+        <span class="event-time">4:30 PM – 5:45 PM</span>
+        <div class="event-description">🌆 <strong>SUMMIT One Vanderbilt</strong> — day → sunset → night views. Ticket ~<strong>$44–55</strong>.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/summitone.png" alt="SUMMIT One Vanderbilt" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/summitone_2.jpg" alt="Reflections inside SUMMIT"/>
+          <div class="caption">SUMMIT One Vanderbilt</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">3:00 PM – 3:30 PM</span>
-    <div class="event-description">🥟 <strong>Vanessa’s Dumpling House (Chinatown)</strong> — famous dumplings & sesame pancakes (~$5–8). Hop off Big Bus back to Manhattan.</div>
-    <img src="imgs/vanessa.png" alt="Vanessa's Dumpling House" />
-  </div>
+      <div class="event">
+        <span class="event-time">6:00 PM – 6:30 PM</span>
+        <div class="event-description">🎄 Rockefeller Center Tree & Rink (view free; skating ~$30–45).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/rockefeller.png" alt="Rockefeller Center Tree" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/rockefeller_2.jpg" alt="Skating rink at Rockefeller"/>
+          <div class="caption">Rockefeller Center Tree</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">4:30 PM – 5:45 PM</span>
-    <div class="event-description">🌆 <strong>SUMMIT One Vanderbilt</strong> — day → sunset → night views. Ticket ~<strong>$44–55</strong>.</div>
-    <img src="imgs/summitone.png" alt="SUMMIT One Vanderbilt" />
-  </div>
+      <div class="event">
+        <span class="event-time">6:35 PM – 7:00 PM</span>
+        <div class="event-description">Bryant Park Winter Village (free to enter; skate rental ~$18–25).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/brayantpark.png" alt="Bryant Park Winter Village" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/bryantpark_2.jpg" alt="Holiday shops in Bryant Park"/>
+          <div class="caption">Bryant Park Winter Village</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">6:00 PM – 6:30 PM</span>
-    <div class="event-description">🎄 Rockefeller Center Tree & Rink (view free; skating ~$30–45).</div>
-    <img src="imgs/rockefeller.png" alt="Rockefeller Center Tree" />
-  </div>
+      <div class="event">
+        <span class="event-time">7:15 PM – 9:00 PM</span>
+        <div class="event-description">✨ Times Square (open 24/7). Night lights & photos before returning to hotel.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/timesquare.png" alt="Times Square at night" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/timesquare_2.jpg" alt="Times Square billboards"/>
+          <div class="caption">Times Square — Night</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="event">
-    <span class="event-time">6:35 PM – 7:00 PM</span>
-    <div class="event-description">Bryant Park Winter Village (free to enter; skate rental ~$18–25). Grab snack or hot chocolate while browsing shops.</div>
-    <img src="imgs/brayantpark.png" alt="Bryant Park Winter Village" />
-  </div>
+  <!-- Day 2 -->
+  <section id="day-28" class="day">
+    <div class="day-header"><h2>December 28 · NYC Highlights • Midtown • Temple Evening</h2></div>
+    <div class="day-content">
+      <div class="event">
+        <span class="event-time">8:30 AM – 9:15 AM</span>
+        <div class="event-description">🛍️ Macy’s Herald Square & Holiday Windows (free photo walk).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/macys.jpg" alt="Macy's Herald Square" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/macys_2.jpg" alt="Macy's holiday windows"/>
+          <div class="caption">Macy’s Holiday Windows</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">7:15 PM – 9:00 PM</span>
-    <div class="event-description">✨ Times Square (open 24/7). Enjoy night lights and photo session before returning to hotel.</div>
-    <img src="imgs/timesquare.png" alt="Times Square at night" />
-  </div>
-</section>
+      <div class="event">
+        <span class="event-time">9:30 AM – 10:15 AM</span>
+        <div class="event-description">5th Avenue Holiday Window Walk — Saks, Cartier, and St. Patrick’s Cathedral (free).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/5th_ave.jpg" alt="5th Avenue Windows" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/5th_ave_2.jpg" alt="Saks light show"/>
+          <div class="caption">5th Ave Holiday Walk</div>
+        </div>
+      </div>
 
-<!-- Day 2 -->
-<section id="day-28" class="day">
-  <h2>December 28 (NYC Highlights · Midtown · Temple Evening)</h2>
+      <div class="event">
+        <span class="event-time">10:25 AM – 10:50 AM</span>
+        <div class="event-description">Lotte New York Palace — Christmas Tree courtyard (free photo spot).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/lotte_palace.jpg" alt="Lotte New York Palace Tree" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/lotte_palace_2.jpg" alt="Courtyard decorations"/>
+          <div class="caption">Lotte New York Palace</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">8:30 AM – 9:15 AM</span>
-    <div class="event-description">🛍️ Macy’s Herald Square & Holiday Windows (free photo walk).</div>
-    <img src="imgs/macys.jpg" alt="Macy's Herald Square" />
-  </div>
+      <div class="event">
+        <span class="event-time">11:00 AM – 11:30 AM</span>
+        <div class="event-description">🚉 Grand Central Terminal — main concourse & ceiling photos (free). Coffee stop inside.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/grand_central.jpg" alt="Grand Central Terminal" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/grand_central_2.jpg" alt="Grand Central ceiling"/>
+          <div class="caption">Grand Central Terminal</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">9:30 AM – 10:15 AM</span>
-    <div class="event-description">5th Avenue Holiday Window Walk — Saks, Cartier, and St. Patrick’s Cathedral (free).</div>
-    <img src="imgs/5th_ave.jpg" alt="5th Avenue Windows" />
-  </div>
+      <div class="event">
+        <span class="event-time">11:45 AM – 12:10 PM</span>
+        <div class="event-description">🌉 Manila Street (Chinatown) — Filipino bakeries & murals (free walk & photos).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/manila_street.jpg" alt="Manila Street Chinatown" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/manila_street_2.jpg" alt="Filipino bakery in Chinatown"/>
+          <div class="caption">Manila Street — Chinatown</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">10:25 AM – 10:50 AM</span>
-    <div class="event-description">Lotte New York Palace — Christmas Tree courtyard (free photo spot).</div>
-    <img src="imgs/lotte_palace.jpg" alt="Lotte New York Palace Tree" />
-  </div>
+      <div class="event">
+        <span class="event-time">12:20 PM – 12:50 PM</span>
+        <div class="event-description">🍕 <strong>Joe’s Pizza</strong> — classic New York slice (~$5–7). A true NYC must-try lunch.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/joes_pizza.jpg" alt="Joe's Pizza" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/joes_pizza_2.jpg" alt="Slices ready"/>
+          <div class="caption">Lunch — Joe’s Pizza</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">11:00 AM – 11:30 AM</span>
-    <div class="event-description">🚉 Grand Central Terminal — main concourse & ceiling photos (free). Coffee stop inside Magnolia Bakery or Joe Coffee.</div>
-    <img src="imgs/grand_central.jpg" alt="Grand Central Terminal" />
-  </div>
+      <div class="event">
+        <span class="event-time">1:15 PM – 1:40 PM</span>
+        <div class="event-description">🍜 <strong>Xi’an Famous Foods</strong> — hand-pulled noodles / spicy cumin lamb (~$8–13).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/xian.jpg" alt="Xi'an Famous Foods" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/xian_2.jpg" alt="Biang biang noodles"/>
+          <div class="caption">Snack — Xi’an Famous Foods</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">11:45 AM – 12:10 PM</span>
-    <div class="event-description">🌉 Manila Street (Chinatown) — Filipino bakeries & murals (free walk & photos).</div>
-    <img src="imgs/manila_street.jpg" alt="Manila Street Chinatown" />
-  </div>
+      <div class="event">
+        <span class="event-time">1:50 PM – 2:20 PM</span>
+        <div class="event-description">🏙️ The Vessel (Hudson Yards) — base area photos (free viewing platforms nearby).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/vessel.jpg" alt="The Vessel" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/vessel_2.jpg" alt="Vessel base"/>
+          <div class="caption">Hudson Yards — The Vessel</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">12:20 PM – 12:50 PM</span>
-    <div class="event-description">🍕 <strong>Joe’s Pizza</strong> — classic New York slice (~$5–7). A true NYC must-try lunch.</div>
-    <img src="imgs/joes_pizza.jpg" alt="Joe's Pizza" />
-  </div>
+      <div class="event">
+        <span class="event-time">2:20 PM – 3:00 PM</span>
+        <div class="event-description">🍽️ <strong>Market 57 (Pier 57 Food Hall)</strong> — waterfront food hall curated with small local vendors; great Hudson River views and quick bites. Little Island is a 5–7 min walk if you want a quick photo stop.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/market57.jpg" alt="Market 57 at Pier 57" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/market57_2.jpg" alt="Food stalls inside Market 57"/>
+          <div class="caption">Market 57 — Pier 57 Food Hall</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">1:15 PM – 1:40 PM</span>
-    <div class="event-description">🍜 <strong>Xi’an Famous Foods</strong> — hand-pulled noodles / spicy cumin lamb (~$8–13). NYC favorite comfort food.</div>
-    <img src="imgs/xian.jpg" alt="Xi'an Famous Foods" />
-  </div>
+      <div class="event">
+        <span class="event-time">3:10 PM – 3:40 PM</span>
+        <div class="event-description">🛒 Chelsea Market — browse local shops & artisanal goods (free entry).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/chelsea_market.jpg" alt="Chelsea Market" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/chelsea_market_2.jpg" alt="Market interior"/>
+          <div class="caption">Chelsea Market</div>
+        </div>
+      </div>
 
-  <div class="event">
-    <span class="event-time">1:50 PM – 2:20 PM</span>
-    <div class="event-description">🏙️ The Vessel (Hudson Yards) — base area photos (free viewing platforms nearby).</div>
-    <img src="imgs/vessel.jpg" alt="The Vessel at Hudson Yards" />
-  </div>
-
-  <div class="event">
-    <span class="event-time">2:30 PM – 3:10 PM</span>
-    <div class="event-description">🛒 Chelsea Market — browse local shops & artisanal goods (free entry). Optional snack or coffee break.</div>
-    <img src="imgs/chelsea_market.jpg" alt="Chelsea Market" />
-  </div>
-
-  <div class="event">
-    <span class="event-time">6:00 PM – 6:40 PM</span>
-    <div class="event-description">⛪ Manhattan New York Temple (LDS) — evening visit & photos at 125 Columbus Ave (free entry grounds).</div>
-    <img src="imgs/manhattan_temple.jpg" alt="Manhattan New York Temple" />
-  </div>
-
-  <div class="event">
-    <span class="event-time">7:00 PM – 7:45 PM</span>
-    <div class="event-description">Dinner near Temple: choose quick bites around Columbus Circle or return to Midtown for late night dessert.</div>
-  </div>
-</section>
+      <div class="event">
+        <span class="event-time">6:00 PM – 6:40 PM</span>
+        <div class="event-description">⛪ Manhattan New York Temple (LDS) — evening visit & photos.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/manhattan_temple.jpg" alt="Manhattan New York Temple" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/manhattan_temple_2.jpg" alt="Temple at dusk"/>
+          <div class="caption">Manhattan New York Temple</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Day 3 -->
   <section id="day-29" class="day">
-    <h2>December 29 (Drive NYC → Palmyra quick stops → Buffalo check‑in)</h2>
+    <div class="day-header"><h2>December 29 · Drive NYC → Palmyra → Buffalo Check‑in</h2></div>
+    <div class="day-content">
+      <div class="event">
+        <span class="event-time">6:00 AM – 12:00 PM</span>
+        <div class="event-description">Drive NYC → Palmyra (~300 mi · 5.5–6 h). Breakfast on the road.</div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">6:00 AM – 12:00 PM</span>
-      <div class="event-description">Drive NYC → Palmyra (~300 mi · 5.5–6 h). Breakfast on the road.</div>
-    </div>
+      <div class="event">
+        <span class="event-time">12:00 PM – 12:30 PM</span>
+        <div class="event-description">Palmyra New York Temple (LDS). Free. Photos & quiet visit.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/palmyra_temple.jpg" alt="Palmyra New York Temple" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/palmyra_temple_2.jpg" alt="Temple grounds"/>
+          <div class="caption">Palmyra New York Temple</div>
+        </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">12:00 PM – 12:30 PM</span>
-      <div class="event-description">Palmyra New York Temple (LDS). Free. Photos & quiet visit.</div>
-      <img src="imgs/palmyra_temple.jpg" alt="Palmyra New York Temple" />
-    </div>
+      <div class="event">
+        <span class="event-time">12:35 PM – 1:05 PM</span>
+        <div class="event-description">Sacred Grove (Smith Family Farm). Free. Gentle walk.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/sacred_grove.jpg" alt="Sacred Grove" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/sacred_grove_2.jpg" alt="Wooded path in Sacred Grove"/>
+          <div class="caption">Sacred Grove</div>
+        </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">12:35 PM – 1:05 PM</span>
-      <div class="event-description">Sacred Grove (Smith Family Farm). Free. Gentle walk.</div>
-      <img src="imgs/sacred_grove.jpg" alt="Sacred Grove" />
-    </div>
+      <div class="event">
+        <span class="event-time">1:10 PM – 1:30 PM</span>
+        <div class="event-description">Hill Cumorah (photo stop). Free.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/hill_cumorah.jpg" alt="Hill Cumorah" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/hill_cumorah_2.jpg" alt="Monument at Hill Cumorah"/>
+          <div class="caption">Hill Cumorah</div>
+        </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">1:10 PM – 1:30 PM</span>
-      <div class="event-description">Hill Cumorah (photo stop). Free.</div>
-      <img src="imgs/hill_cumorah.jpg" alt="Hill Cumorah" />
-    </div>
+      <div class="event">
+        <span class="event-time">1:35 PM – 2:05 PM</span>
+        <div class="event-description">Book of Mormon Publication Site (Downtown Palmyra). Free.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/publication_site.jpg" alt="Publication Site" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/publication_site_2.jpg" alt="Inside the publication site"/>
+          <div class="caption">Publication Site</div>
+        </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">1:35 PM – 2:05 PM</span>
-      <div class="event-description">Book of Mormon Publication Site (Downtown Palmyra). Free.</div>
-      <img src="imgs/publication_site.jpg" alt="Book of Mormon Publication Site" />
-    </div>
+      <div class="event">
+        <span class="event-time">3:00 PM – 5:00 PM</span>
+        <div class="event-description">Drive Palmyra → Buffalo (~95 mi · 1.5–2 h). Check‑in hotel.</div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">3:00 PM – 5:00 PM</span>
-      <div class="event-description">Drive Palmyra → Buffalo (~95 mi · 1.5–2 h). Check‑in hotel.</div>
-    </div>
-
-    <div class="event">
-      <span class="event-time">6:30 PM – 8:00 PM</span>
-      <div class="event-description">Dinner in Buffalo — try Anchor Bar (original Buffalo wings) or Chef’s Restaurant.</div>
-      <img src="imgs/anchor_bar.jpg" alt="Buffalo wings at Anchor Bar" />
+      <div class="event">
+        <span class="event-time">6:30 PM – 8:00 PM</span>
+        <div class="event-description">Dinner in Buffalo — try Anchor Bar (original Buffalo wings) or Chef’s Restaurant.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/anchor_bar.jpg" alt="Anchor Bar wings" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/anchor_bar_2.jpg" alt="Buffalo wings close-up"/>
+          <div class="caption">Dinner — Anchor Bar</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Day 4 -->
   <section id="day-30" class="day">
-    <h2>December 30 (Niagara Falls U.S. Viewpoints → Lunch → Drive to Virginia)</h2>
+    <div class="day-header"><h2>December 30 · Niagara Falls U.S. Viewpoints • Lunch • Drive to Virginia</h2></div>
+    <div class="day-content">
+      <div class="event">
+        <span class="event-time">7:30 AM – 8:15 AM</span>
+        <div class="event-description">Drive Buffalo → Niagara Falls State Park (~25–30 min). Park near Prospect/Visitor Center (~$10).</div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">7:30 AM – 8:15 AM</span>
-      <div class="event-description">Drive Buffalo → Niagara Falls State Park (~25–30 min). Park near Prospect/Visitor Center (~$10).</div>
-    </div>
-
-    <div class="event">
-      <span class="event-time">8:30 AM – 9:00 AM</span>
-      <div class="event-description">Niagara Falls Observation Tower (Prospect Point). <strong>$1.25</strong>. Best single panorama (U.S. side).</div>
-      <img src="imgs/observation_tower.jpg" alt="Niagara Observation Tower" />
-    </div>
-
-    <div class="event">
-      <span class="event-time">9:15 AM – 10:00 AM</span>
-      <div class="event-description">Maid of the Mist — boat ride (if operating). ~<strong>$28</strong> adult. <em>Seasonal; often closed in winter</em>.</div>
-      <img src="imgs/maid_of_the_mist.jpg" alt="Maid of the Mist" />
-    </div>
-
-    <div class="event">
-        <span class="event-time">10: AM – 11:00 AM</span>
-        <div class="event-description">Cave of the Winds — elevator down to the base of Bridal Veil Falls. <strong>~$19–21 adult</strong>. Rain poncho & sandals provided. Experience the power of the falls up close!</div>
-        <img src="imgs/cave_of_the_winds.jpg" alt="Cave of the Winds Niagara Falls" />
+      <div class="event">
+        <span class="event-time">8:30 AM – 9:00 AM</span>
+        <div class="event-description">Niagara Falls Observation Tower (Prospect Point). <strong>$1.25</strong>. Best single panorama (U.S. side).</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/observation_tower.jpg" alt="Niagara Observation Tower" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/observation_tower_2.jpg" alt="Prospect Point view"/>
+          <div class="caption">Niagara — Observation Tower</div>
         </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">12:00 PM – 12:45 PM</span>
-      <div class="event-description">Lunch near the Falls — Red Coach Inn (year‑round). ~$20–35 pp.</div>
-      <img src="imgs/red_coach_inn.jpg" alt="Red Coach Inn" />
-    </div>
+      <div class="event">
+        <span class="event-time">9:15 AM – 10:00 AM</span>
+        <div class="event-description">Maid of the Mist — boat ride (if operating). ~<strong>$28</strong> adult. <em>Seasonal; often closed in winter</em>.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/maid_of_the_mist.jpg" alt="Maid of the Mist" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/maid_of_the_mist_2.jpg" alt="Boat near the falls"/>
+          <div class="caption">Maid of the Mist</div>
+        </div>
+      </div>
 
-    <div class="event">
-      <span class="event-time">1:00 PM → late evening</span>
-      <div class="event-description">Drive back to Virginia (~7–8 h · ~420 mi). Fuel+tolls ~$100–130.</div>
+      <div class="event">
+        <span class="event-time">10:00 AM – 11:00 AM</span>
+        <div class="event-description">Cave of the Winds — elevator down to the base of Bridal Veil Falls. <strong>~$19–21 adult</strong>.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/cave_of_the_winds.jpg" alt="Cave of the Winds" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/cave_of_the_winds_2.jpg" alt="Decks at Cave of the Winds"/>
+          <div class="caption">Cave of the Winds</div>
+        </div>
+      </div>
+
+      <div class="event">
+        <span class="event-time">12:00 PM – 12:45 PM</span>
+        <div class="event-description">Lunch near the Falls — Red Coach Inn (year‑round). ~$20–35 pp.</div>
+        <div class="slider">
+          <img loading="lazy" decoding="async" src="imgs/red_coach_inn.jpg" alt="Red Coach Inn" class="active"/>
+          <img loading="lazy" decoding="async" src="imgs/red_coach_inn_2.jpg" alt="Red Coach Inn dining"/>
+          <div class="caption">Lunch — Red Coach Inn</div>
+        </div>
+      </div>
+
+      <div class="event">
+        <span class="event-time">1:00 PM → late evening</span>
+        <div class="event-description">Drive back to Virginia (~7–8 h · ~420 mi). Fuel+tolls ~$100–130.</div>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Trip Itinerary — NYC · Palmyra · Buffalo · Niagara
+    © 2025 Trip Itinerary — NYC · Palmyra · Buffalo · Niagara
   </footer>
+
+  <!-- Christmas music (replace src with your file: /audio/christmas.mp3) -->
+  <audio id="bgMusic" src="christmas.mp3" preload="auto" loop></audio>
+  <button class="music-toggle" id="musicBtn" aria-pressed="false" aria-label="Toggle Christmas music">▶︎ Music</button>
+
+  <script>
+    /* =====================
+       Simple Auto-Fade Slider
+       ===================== */
+    function initSliders(){
+      const sliders = document.querySelectorAll('.slider');
+      sliders.forEach(slider => {
+        const imgs = slider.querySelectorAll('img');
+        if(!imgs.length) return;
+        let i = 0; imgs[0].classList.add('active');
+        const speed = parseInt(slider.dataset.speed, 10) || 3000;
+        if (imgs.length === 1) return; // no rotation if only one image
+        setInterval(() => {
+          imgs[i].classList.remove('active');
+          i = (i + 1) % imgs.length;
+          imgs[i].classList.add('active');
+        }, speed);
+      });
+    }
+
+    /* =====================
+       Snowfall Canvas
+       ===================== */
+    function initSnow(){
+      // Respect Reduced Motion
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const canvas = document.getElementById('snow');
+      const ctx = canvas.getContext('2d');
+      let w, h, flakes;
+      function reset(){
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        flakes = Array.from({length: Math.floor(w * 0.5)}, () => ({
+          x: Math.random()*w,
+          y: Math.random()*-h,
+          r: Math.random()*2 + 0.5,
+          s: Math.random()*0.5 + 0.25, // speed
+          a: Math.random()*Math.PI*2,
+        }));
+      }
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = 'rgba(255,255,255,.9)';
+        flakes.forEach(f => {
+          f.y += f.s; f.x += Math.sin(f.a += 0.01) * 0.3;
+          if (f.y > h + 5) { f.y = -10; f.x = Math.random()*w; }
+          ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      reset(); draw();
+      window.addEventListener('resize', reset);
+    }
+
+    /* =====================
+       Music Autoplay (with user gesture unlock)
+       ===================== */
+    function initMusic(){
+      const audio = document.getElementById('bgMusic');
+      const btn = document.getElementById('musicBtn');
+      let unlocked = false; // becomes true after first user gesture
+
+      // Try to start muted, then wait for user gesture to unmute
+      audio.muted = true; audio.play().catch(()=>{});
+
+      function toggle(){
+        if(!unlocked){
+          audio.muted = false; unlocked = true;
+        }
+        if (audio.paused){ audio.play(); btn.textContent = '⏸︎ Music'; btn.setAttribute('aria-pressed','true'); }
+        else { audio.pause(); btn.textContent = '▶︎ Music'; btn.setAttribute('aria-pressed','false'); }
+      }
+
+      btn.addEventListener('click', toggle);
+      // Also unlock on first page interaction
+      window.addEventListener('pointerdown', function once(){
+        if(!unlocked){ audio.muted = false; unlocked = true; audio.play().catch(()=>{}); btn.textContent = '⏸︎ Music'; btn.setAttribute('aria-pressed','true'); }
+        window.removeEventListener('pointerdown', once);
+      });
+    }
+
+    // Kick everything off
+    initSliders();
+    initSnow();
+    initMusic();
+  </script>
 </body>
 </html>
